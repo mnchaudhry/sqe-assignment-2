@@ -1,17 +1,23 @@
-// STUB - Simple hard-coded implementation
+
 public class ScholarshipServiceStub implements ScholarshipService {
+
+    private static final double ELIGIBILITY_THRESHOLD = 3.5;
+    private static final double HIGH_TIER_THRESHOLD = 3.8;
+    private static final double HIGH_TIER_AMOUNT = 5000.0;
+    private static final double BASE_TIER_AMOUNT = 3000.0;
 
     @Override
     public boolean isEligible(double gpa) {
-        return gpa >= 3.5;
+        return gpa >= ELIGIBILITY_THRESHOLD;
     }
 
     @Override
     public double getAmount(double gpa) {
-        if (gpa >= 3.8) {
-            return 5000.0;
-        } else if (gpa >= 3.5) {
-            return 3000.0;
+        if (gpa >= HIGH_TIER_THRESHOLD) {
+            return HIGH_TIER_AMOUNT;
+        }
+        if (gpa >= ELIGIBILITY_THRESHOLD) {
+            return BASE_TIER_AMOUNT;
         }
         return 0.0;
     }
